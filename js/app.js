@@ -1,4 +1,4 @@
-// Crear número al azar
+// Generar número secreto
 let numeroSecreto = Math.floor(Math.random() * 20) + 1;
 
 function comprobar() {
@@ -17,4 +17,12 @@ function comprobar() {
         res.innerHTML = "✅ ACERTASTE el número";
         res.style.color = "green";
     }
+}
+
+function reiniciar() {
+    // Generar nuevo número
+    numeroSecreto = Math.floor(Math.random() * 20) + 1;
+    // Borrar caja de texto y mensaje
+    document.getElementById("numeroUsuario").value = "";
+    document.getElementById("resultado").innerHTML = "";
 }
