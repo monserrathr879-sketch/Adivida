@@ -6,15 +6,18 @@
 </head>
 <body>
 
-    <h1>🎮 Adivina el Número</h1>
-    <p>Ingresa un número entre 1 y 20:</p>
+    <div class="caja">
+        <h1>🎮 Adivina el Número</h1>
+        <p>Ingresa un número entre 1 y 20:</p>
 
-    <input type="number" id="numeroUsuario" min="1" max="20">
-    <br><br>
+        <input type="number" id="numeroUsuario" min="1" max="20">
+        <br><br>
 
-    <button onclick="comprobar()">¡COMPROBAR!</button>
+        <button onclick="comprobar()">¡COMPROBAR!</button>
+        <button onclick="reiniciar()" class="btn-reiniciar">🔄 REINICIAR</button>
 
-    <div id="resultado"></div>
+        <div id="resultado"></div>
+    </div>
 
     <script src="script.js"></script>
 </body>
