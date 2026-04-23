@@ -5,6 +5,15 @@ body {
     padding-top: 50px;
 }
 
+.caja {
+    background: white;
+    padding: 30px;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 10px gray;
+}
+
 input {
     padding: 10px;
     font-size: 18px;
@@ -20,6 +29,11 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 5px;
+}
+
+.btn-reiniciar {
+    background-color: orange;
 }
 
 #resultado {
