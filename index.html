@@ -9,7 +9,7 @@
             background-color: #f0f0f0;
             padding-top: 50px;
         }
-        .caja {
+       .caja {
             background: white;
             padding: 30px;
             max-width: 400px;
@@ -32,10 +32,10 @@
             cursor: pointer;
             margin: 5px;
         }
-        .btn-comprobar {
+       .btn-comprobar {
             background-color: blue;
         }
-        .btn-reiniciar {
+       .btn-reiniciar {
             background-color: orange;
         }
         #resultado {
@@ -61,19 +61,28 @@
     </div>
 
     <script>
-        // Generar número secreto
+        // Generar número secreto entre 1 y 20
         let numeroSecreto = Math.floor(Math.random() * 20) + 1;
 
         function comprobar() {
-            let usuario = parseInt(document.getElementById("numeroUsuario").value);
+            let valorUsuario = document.getElementById("numeroUsuario").value;
+            let usuario = parseInt(valorUsuario);
             let res = document.getElementById("resultado");
 
+            // Validar que sea un número válido
+            if (isNaN(usuario) || usuario < 1 || usuario > 20) {
+                res.innerHTML = "⚠️ Solo números del 1 al 20";
+                res.style.color = "orange";
+                return;
+            }
+
+            // LÓGICA CORREGIDA:
             if (usuario < numeroSecreto) {
-                res.innerHTML = "📉 Cantidad menor";
+                res.innerHTML = "📈 Cantidad mayor";  // Tu número es bajo, el secreto es mayor
                 res.style.color = "blue";
             }
             else if (usuario > numeroSecreto) {
-                res.innerHTML = "📈 Cantidad mayor";
+                res.innerHTML = "📉 Cantidad menor";  // Tu número es alto, el secreto es menor
                 res.style.color = "red";
             }
             else {
@@ -85,7 +94,7 @@
         function reiniciar() {
             // Generar nuevo número
             numeroSecreto = Math.floor(Math.random() * 20) + 1;
-            // Borrar caja de texto y mensaje
+            // Limpiar
             document.getElementById("numeroUsuario").value = "";
             document.getElementById("resultado").innerHTML = "";
         }
