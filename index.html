@@ -2,7 +2,48 @@
 <html>
 <head>
     <title>Adivina el Número</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding-top: 50px;
+        }
+        .caja {
+            background: white;
+            padding: 30px;
+            max-width: 400px;
+            margin: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 10px gray;
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            width: 100px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .btn-comprobar {
+            background-color: blue;
+        }
+        .btn-reiniciar {
+            background-color: orange;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,12 +54,42 @@
         <input type="number" id="numeroUsuario" min="1" max="20">
         <br><br>
 
-        <button onclick="comprobar()">¡COMPROBAR!</button>
-        <button onclick="reiniciar()" class="btn-reiniciar">🔄 REINICIAR</button>
+        <button class="btn-comprobar" onclick="comprobar()">¡COMPROBAR!</button>
+        <button class="btn-reiniciar" onclick="reiniciar()">🔄 REINICIAR</button>
 
         <div id="resultado"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Generar número secreto
+        let numeroSecreto = Math.floor(Math.random() * 20) + 1;
+
+        function comprobar() {
+            let usuario = parseInt(document.getElementById("numeroUsuario").value);
+            let res = document.getElementById("resultado");
+
+            if (usuario < numeroSecreto) {
+                res.innerHTML = "📉 Cantidad menor";
+                res.style.color = "blue";
+            }
+            else if (usuario > numeroSecreto) {
+                res.innerHTML = "📈 Cantidad mayor";
+                res.style.color = "red";
+            }
+            else {
+                res.innerHTML = "✅ ACERTASTE el número";
+                res.style.color = "green";
+            }
+        }
+
+        function reiniciar() {
+            // Generar nuevo número
+            numeroSecreto = Math.floor(Math.random() * 20) + 1;
+            // Borrar caja de texto y mensaje
+            document.getElementById("numeroUsuario").value = "";
+            document.getElementById("resultado").innerHTML = "";
+        }
+    </script>
+
 </body>
 </html>
